@@ -1,6 +1,4 @@
-import BackButton from './BackButton'
-import NextButton from './NextButton'
-import RestartButton from './RestartButton'
+import Button from "../../Shared/Button";
 
 interface FormButtonsProps {
   formStep: number,
@@ -46,15 +44,19 @@ export default function FormButtons(props : FormButtonsProps) {
   return (
     <>        
         {(props.noMatchFound || (props.formStep > 0 && props.formStep < 3))  && 
-          <BackButton onClick={onClickBackButton}></BackButton>
+          <div className="float-left">
+            <Button label="Back" primary={false} onClick={onClickBackButton} />
+          </div>
         }
         
         {!props.noMatchFound && props.formStep < 3  && 
-          <NextButton onClick={onClickNextButton}></NextButton>
+          <div className="float-right">
+            <Button label="Next" primary={true} onClick={onClickNextButton} />
+          </div>
         }
 
         {props.formStep >= 3 &&
-          <RestartButton onClick={onClickRestartButton}></RestartButton>
+          <Button label="Restart" primary={true} onClick={onClickRestartButton} />
         } 
     </>
   )
