@@ -68,7 +68,7 @@ export class FormController {
 				return c.json({ message: "No available facilities were found with that care type near your area." }, 404);
 			}
 
-			console.log("Found matching facility for user:", closestFacility);
+			console.log("Found matching facility for user.");
 			return c.json({ data: closestFacility }, 200);
 		} catch (error) {
 			console.log("Error validating zip code:", error);
