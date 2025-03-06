@@ -18,7 +18,7 @@ export default function NameInput(props: NameInputProps) {
   return (
     <InputWrapper>
       <TextInput 
-        label="Name" 
+        label="Your Name" 
         value={props.patientName}
         onChange={handleOnChange}
         inputIsInvalid={props.inputIsInvalid}

@@ -61,6 +61,35 @@ export default function Form() {
     fetchCareTypes();
   }, []);
 
+  useEffect(() => {
+    const handleEnterKeyPress = (event: KeyboardEvent) => {
+      if (event.key === "Enter") {
+        event.preventDefault();
+
+        if (!noMatchFound) {
+          switch (formStep) {
+            case 0:
+              handleNameValidation();
+              break;
+            case 1:
+              handleCareTypeValidation();
+              break;
+            case 2:
+              handleSearchMatchingFacility();
+              break;
+          }
+        }
+      }
+    };
+
+    document.addEventListener('keydown', handleEnterKeyPress);
+
+    return () => {
+      document.removeEventListener('keydown', handleEnterKeyPress);
+    };
+
+  })
+
   
   async function handleNameValidation() {
     if (!patientName) {

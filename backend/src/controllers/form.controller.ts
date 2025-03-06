@@ -55,6 +55,10 @@ export class FormController {
 
 			const careType = c.req.param("careType");
 
+			if (!careType) {
+				return c.json({ message: "You must enter a care type." }, 400);
+			}
+
 			let results = await facilityService.getAvailableFacilitiesByCareTypeAndUserZipCode(careType, userZipCode);
 			results = results.sort((a, b) => a.zipCodeDistance - b.zipCodeDistance);
 
